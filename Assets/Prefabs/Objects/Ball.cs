@@ -19,6 +19,12 @@ public class Ball : MonoBehaviour
 
     public string magicWord = "hello";
 
+
+    public string[] allMagicWords = new string[] { "hello", "left", "right",
+                                                "blue", "green", "red", "yellow",
+                                                "ball", "juggle", "throw",
+                                                "jester", "king", "tomato"};
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,5 +71,8 @@ public class Ball : MonoBehaviour
         return magicWord.ToLower().Trim().Contains(word.ToLower().Trim());
     }
 
-    
+    public void SelectNewMagicWord()
+    {
+        this.magicWord = allMagicWords[allMagicWords.Length - 1];
+    }
 }

@@ -7,6 +7,7 @@ public class BallSpawner : MonoBehaviour
     public GameObject Ball;
     public Transform spawnPoint;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,6 @@ public class BallSpawner : MonoBehaviour
 
     void SpawnBall()
     {
-        print("Spawning ball");
         GameObject.Instantiate(Ball, spawnPoint.position + Vector3.right * Random.RandomRange(-6f, 6f), Quaternion.identity, this.transform);
     }
 
