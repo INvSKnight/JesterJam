@@ -20,6 +20,13 @@ public class voiceinput : MonoBehaviour
         actions.Add("tomato", Tomato);
         actions.Add("blue", Blue);
         actions.Add("hello", Hello);
+        actions.Add("green", Green);
+        actions.Add("red", Red);
+        actions.Add("ball", Roundthing);
+        actions.Add("juggle", Throwthing);
+        actions.Add("throw", Lunge);
+        actions.Add("jester", Jester);
+        actions.Add("king", King);
 
 
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
@@ -56,5 +63,40 @@ public class voiceinput : MonoBehaviour
     private void Hello() 
     {
         juggling.TryToThrowBall("hello");
+    }
+
+    private void Red() 
+    {
+        juggling.TryToThrowBall("red");
+    }
+
+    private void Lunge() 
+    {
+        juggling.TryToThrowBall("throw");
+    }
+
+    private void Jester()
+    {
+        juggling.TryToThrowBall("jester");
+    }
+
+    private void King() 
+    {
+        juggling.TryToThrowBall("king");
+    }
+
+    private void Green() 
+    {
+        juggling.TryToThrowBall("green");
+    }
+
+    private void Roundthing() 
+    {
+        juggling.TryToThrowBall("ball");
+    }
+
+    private void Throwthing()
+    {
+        juggling.TryToThrowBall("juggle");
     }
 }
