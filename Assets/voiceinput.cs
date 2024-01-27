@@ -7,11 +7,14 @@ using UnityEngine.Windows.Speech;
 
 public class voiceinput : MonoBehaviour
 {
+    Juggling juggling;
+
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
     private void Start()
     {
+        juggling = GameObject.Find("Juggling").GetComponent<Juggling>();
         actions.Add("left", Up);
         actions.Add("right", Down);
 
@@ -27,10 +30,10 @@ public class voiceinput : MonoBehaviour
 
     private void Up()
     {
-        transform.Translate(0, 1, 0);
+        juggling.ThrowBallLeft();
     }
     private void Down()
     {
-        transform.Translate(0, -1, 0);
+        juggling.ThrowBallRight();
     }
 }
