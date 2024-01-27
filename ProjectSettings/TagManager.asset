@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - BallSpawner
+  - Rope
   layers:
   - Default
   - TransparentFX

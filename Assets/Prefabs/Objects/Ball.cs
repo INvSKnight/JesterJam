@@ -16,6 +16,7 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
 
     private float timeOfLastThrow = 0;
+    private float timeOfCreation = 0;
 
     public string magicWord = "hello";
 
@@ -28,6 +29,8 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeOfCreation = Time.time;
+
         RandomizeMagicWord();
 
         rb = GetComponent<Rigidbody2D>();
@@ -54,7 +57,7 @@ public class Ball : MonoBehaviour
     {
         if (grabbed) return false;
         float timeSinceLastThrow = Time.time - timeOfLastThrow;
-        if (timeSinceLastThrow < 1.0) return false;
+        if (timeSinceLastThrow < 2.0) return false;
 
         return true;
     }
@@ -64,7 +67,10 @@ public class Ball : MonoBehaviour
         timeOfLastThrow = Time.time;
         grabbed = false;
         //rb.AddForce(Vector3.up * 200f);
-        rb.velocity = Vector3.up * 8f + Vector3.right * Random.RandomRange(-0.5f, 0.5f);
+
+        Vector3 y = Vector3.up * (7f + Random.RandomRange(-1.0f, 1.0f));
+        Vector3 x = Vector3.right * 0f; // Random.RandomRange(-0.5f, 0.5f);
+        rb.velocity = y + x;
     }
 
     public bool MatchesWord(string word)
@@ -81,23 +87,28 @@ public class Ball : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        // Ignore collisions right after being spawned, to prevent infinite loop in spawn area
+        float secondsExisting = Time.time - timeOfCreation;
+        if (secondsExisting < 0.2f) return;
+
+        // Splatter if the other object is a ball
+        if (collision.otherCollider == null) return;
+        if (collision.otherCollider.gameObject.tag != "Ball") return;
+        // For some reason it still triggers on the rope. Hacky solution: 
+        if (this.transform.position.y < -2.0f) return; 
+
         GameObject spawnerObject = GameObject.FindGameObjectWithTag("BallSpawner");
         BallSpawner spawner = spawnerObject.GetComponent<BallSpawner>();
 
-        if (collision.otherCollider.gameObject.tag == "Ball")
-        {
-            print("SPLAT!");
-            /*
-            spawner.SpawnBall();
-            spawner.SpawnBall();
+        
+        spawner.SpawnBall();
+        //spawner.SpawnBall();
 
 
-            GameObject.Destroy(collision.otherCollider.gameObject);
-            GameObject.Destroy(this.gameObject);
-            */
-        } else
-        {
-            print("Collided with NOT-A-BALL");
-        }
+        GameObject.Destroy(collision.otherCollider.gameObject);
+        GameObject.Destroy(this.gameObject);
+        
     }
+
+
 }
