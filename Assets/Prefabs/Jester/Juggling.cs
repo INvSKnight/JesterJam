@@ -126,18 +126,17 @@ public class Juggling : MonoBehaviour
         if (ballLeft == null && ballRight == null) return;
 
         // Check if either of the held juggling balls matches the word from voice recognition
-        Ball[] balls = new Ball[] { ballLeft, ballRight };
-        foreach (Ball ball in balls)
+        if (ballLeft != null && ballLeft.MatchesWord(spokenWord))
         {
-            if (ball == null) continue;
-            if (!ball.grabbed) continue;
-
-            if (ball.MatchesWord(spokenWord))
-            {
-                ball.Throw();
-                return;
-            }
+            ballLeft.Throw();
+            ballLeft = null;
         }
+        if (ballRight != null && ballRight.MatchesWord(spokenWord))
+        {
+            ballRight.Throw();
+            ballRight = null;
+        }
+
 
     }
 
