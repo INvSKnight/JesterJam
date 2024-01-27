@@ -23,7 +23,7 @@ public class BallSpawner : MonoBehaviour
         }    
     }
 
-    void SpawnBall()
+    public void SpawnBall()
     {
         GameObject.Instantiate(Ball, spawnPoint.position + Vector3.right * Random.RandomRange(-6f, 6f), Quaternion.identity, this.transform);
     }

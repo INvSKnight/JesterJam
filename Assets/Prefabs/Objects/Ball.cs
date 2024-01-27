@@ -28,6 +28,8 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RandomizeMagicWord();
+
         rb = GetComponent<Rigidbody2D>();
         label.canvas.worldCamera = Camera.main;
 
@@ -71,8 +73,31 @@ public class Ball : MonoBehaviour
         return magicWord.ToLower().Trim().Contains(word.ToLower().Trim());
     }
 
-    public void SelectNewMagicWord()
+    public void RandomizeMagicWord()
     {
-        this.magicWord = allMagicWords[allMagicWords.Length - 1];
+        int index = (int)Random.RandomRange(0, allMagicWords.Length - 1);
+        this.magicWord = allMagicWords[index];
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject spawnerObject = GameObject.FindGameObjectWithTag("BallSpawner");
+        BallSpawner spawner = spawnerObject.GetComponent<BallSpawner>();
+
+        if (collision.otherCollider.gameObject.tag == "Ball")
+        {
+            print("SPLAT!");
+            /*
+            spawner.SpawnBall();
+            spawner.SpawnBall();
+
+
+            GameObject.Destroy(collision.otherCollider.gameObject);
+            GameObject.Destroy(this.gameObject);
+            */
+        } else
+        {
+            print("Collided with NOT-A-BALL");
+        }
     }
 }
