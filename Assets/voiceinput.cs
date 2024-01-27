@@ -27,6 +27,7 @@ public class voiceinput : MonoBehaviour
         actions.Add("throw", Lunge);
         actions.Add("jester", Jester);
         actions.Add("king", King);
+        actions.Add("yellow", Yellow);
 
 
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
@@ -42,12 +43,12 @@ public class voiceinput : MonoBehaviour
     private void Up()
     {
         print("Voice LEFT");
-        juggling.ThrowBallLeft();
+        juggling.TryToThrowBall("left");
     }
     private void Down()
     {
         print("Voice RIGHT");
-        juggling.ThrowBallRight();
+        juggling.TryToThrowBall("right");
     }
 
     private void Tomato() 
@@ -98,5 +99,10 @@ public class voiceinput : MonoBehaviour
     private void Throwthing()
     {
         juggling.TryToThrowBall("juggle");
+    }
+
+    private void Yellow() 
+    {
+        juggling.TryToThrowBall("yellow");
     }
 }
