@@ -43,6 +43,11 @@ public class Juggling : MonoBehaviour
             ThrowBallRight();
         }
 
+        // Testing voice recognition
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TryToThrowBall("hello");
+        }
     }
 
 
@@ -86,7 +91,6 @@ public class Juggling : MonoBehaviour
             ballLeft = ball;
             ball.grabbed = true;
             ball.grabLocation = handLeft.transform;
-            ball.label.text = "Left";
         }
         
         else
@@ -96,7 +100,6 @@ public class Juggling : MonoBehaviour
                 ballRight = ball;
                 ball.grabbed = true;
                 ball.grabLocation = handRight.transform;
-                ball.label.text = "Right";
             }
         }
     }
@@ -113,6 +116,29 @@ public class Juggling : MonoBehaviour
         if (ballRight == null) return;
         ballRight.GetComponent<Ball>().Throw();
         ballRight = null;
+    }
+
+
+    // Only allows the throw if the correct word is said. Input parameter must match one of the held balls.
+    public void TryToThrowBall(string spokenWord)
+    {
+        print("Trying to throw a ball with word " + spokenWord);
+        if (ballLeft == null && ballRight == null) return;
+
+        // Check if either of the held juggling balls matches the word from voice recognition
+        Ball[] balls = new Ball[] { ballLeft, ballRight };
+        foreach (Ball ball in balls)
+        {
+            if (ball == null) continue;
+            if (!ball.grabbed) continue;
+
+            if (ball.MatchesWord(spokenWord))
+            {
+                ball.Throw();
+                return;
+            }
+        }
+
     }
 
 

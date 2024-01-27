@@ -17,11 +17,15 @@ public class Ball : MonoBehaviour
 
     private float timeOfLastThrow = 0;
 
+    public string magicWord = "hello";
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         label.canvas.worldCamera = Camera.main;
+
+        label.text = magicWord;
     }
 
     // Update is called once per frame
@@ -33,6 +37,8 @@ public class Ball : MonoBehaviour
         {
             this.transform.position = grabLocation.position;
         }
+
+        label.text = magicWord;
     }
 
     // The ball cannot be caught by the jester if already caught or just thrown
@@ -52,4 +58,12 @@ public class Ball : MonoBehaviour
         //rb.AddForce(Vector3.up * 200f);
         rb.velocity = Vector3.up * 8f + Vector3.right * Random.RandomRange(-0.5f, 0.5f);
     }
+
+    public bool MatchesWord(string word)
+    {
+        if (word == null) return false;
+        return magicWord.ToLower().Trim().Contains(word.ToLower().Trim());
+    }
+
+    
 }
