@@ -47,7 +47,6 @@ public class Ball : MonoBehaviour
 
     public void Throw()
     {
-        print("YEET");
         timeOfLastThrow = Time.time;
         grabbed = false;
         //rb.AddForce(Vector3.up * 200f);

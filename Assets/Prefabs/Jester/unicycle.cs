@@ -35,7 +35,7 @@ public class unicycle : MonoBehaviour
         //print("Axis: " + horizontal);
         JointMotor2D motor = joint.motor;
 
-        motor.motorSpeed = wheelDirection * 10f;
+        motor.motorSpeed = wheelDirection * 15f;
         joint.motor = motor;
         
 
@@ -43,7 +43,7 @@ public class unicycle : MonoBehaviour
         
         //print("Wheel direction: " + wheelDirection);
 
-        jesterBody.AddForce(Time.deltaTime * wheelDirection * Vector3.right * 4f);
-        counterWeight.AddForce(Time.deltaTime * wheelDirection * Vector3.right * 2f);
+        jesterBody.AddForce(Time.deltaTime * wheelDirection * Vector3.right * 6f);
+        counterWeight.AddForce(Time.deltaTime * wheelDirection * Vector3.right * 3f);
     }
 }

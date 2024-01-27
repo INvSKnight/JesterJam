@@ -30,10 +30,12 @@ public class voiceinput : MonoBehaviour
 
     private void Up()
     {
+        print("Voice LEFT");
         juggling.ThrowBallLeft();
     }
     private void Down()
     {
+        print("Voice RIGHT");
         juggling.ThrowBallRight();
     }
 }

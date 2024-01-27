@@ -30,8 +30,6 @@ public class Juggling : MonoBehaviour
             print("Juggling balls: " + hitColliders.Length);
         }
 
-  
-        print("Catching ball");
         CatchBall(hitColliders);
 
 
@@ -51,7 +49,6 @@ public class Juggling : MonoBehaviour
 
     public void CatchBall(Collider2D[] hitColliders)
     {
-        print("Checking " + hitColliders.Length + " objects");
         if (hitColliders.Length == 0) return;
 
 
@@ -78,8 +75,6 @@ public class Juggling : MonoBehaviour
         }
 
         Ball ball = closestBall.GetComponent<Ball>();
-        ball.label.text = "Got it!";
-        print("Caught a ball");
 
 
         if (ball.grabbed) return;
@@ -91,6 +86,7 @@ public class Juggling : MonoBehaviour
             ballLeft = ball;
             ball.grabbed = true;
             ball.grabLocation = handLeft.transform;
+            ball.label.text = "Left";
         }
         
         else
@@ -100,6 +96,7 @@ public class Juggling : MonoBehaviour
                 ballRight = ball;
                 ball.grabbed = true;
                 ball.grabLocation = handRight.transform;
+                ball.label.text = "Right";
             }
         }
     }

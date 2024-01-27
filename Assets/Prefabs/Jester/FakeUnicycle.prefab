@@ -315,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 2745341973174513188}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.64, z: 0}
+  m_LocalPosition: {x: 0, y: -4.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -383,7 +383,7 @@ SliderJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -3}
+  m_ConnectedAnchor: {x: 0, y: -4}
   m_AutoConfigureAngle: 1
   m_Angle: 90
   m_UseMotor: 1
@@ -392,7 +392,7 @@ SliderJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_TranslationLimits:
-    m_LowerTranslation: -4
+    m_LowerTranslation: -1
     m_UpperTranslation: 1
 --- !u!114 &747262540348276371
 MonoBehaviour:
@@ -634,8 +634,8 @@ Transform:
   m_GameObject: {fileID: 5076074971148069697}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.337, z: 0}
-  m_LocalScale: {x: 0.38, y: 0.61, z: 1}
+  m_LocalPosition: {x: 0, y: -2.67, z: 0}
+  m_LocalScale: {x: 0.38, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5777500384022198824}
