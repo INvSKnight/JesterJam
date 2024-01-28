@@ -20,6 +20,7 @@ public class Ball : MonoBehaviour
 
     private float timeOfLastThrow = 0;
     private float timeOfCreation = 0;
+    public float timeOfLastCollision = 0;
 
     public string magicWord = "hello";
 
@@ -31,6 +32,9 @@ public class Ball : MonoBehaviour
 
     private AudioSource sfxThrow;
     private int throwCount = 0;
+
+    private bool waffle = false;
+    public Sprite waffleTexture;
 
     // Start is called before the first frame update
     void Start()
@@ -113,6 +117,30 @@ public class Ball : MonoBehaviour
     public void ResetCombo()
     {
         throwCount = 0;
+        timeOfLastCollision = Time.time;
+    }
+
+    public void ReduceCombo()
+    {
+        throwCount -= 1;
+    }
+
+    public void EnableWaffleMode()
+    {
+        waffle = true;
+        SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = waffleTexture;
+
+        spriteRenderer.transform.localScale = Vector3.one;
+        CircleCollider2D circle = GetComponent<CircleCollider2D>();
+        circle.radius = 0.5f;
+
+        scoreLabel.color = Color.yellow;
+    }
+
+    public bool isWaffle()
+    {
+        return waffle;
     }
 
 
@@ -125,8 +153,17 @@ public class Ball : MonoBehaviour
         // Splatter if the other object is a ball
         if (collision.otherCollider == null) return;
         if (collision.otherCollider.gameObject.tag != "Ball") return;
+        if (grabbed) return;
         // For some reason it still triggers on the rope. Hacky solution: 
         if (this.transform.position.y < -2.0f) return;
+
+
+
+        float timeSinceLastCollision = Time.time - timeOfLastCollision;
+        timeOfLastCollision = Time.time;
+
+
+
 
         this.throwCount += 1;
 

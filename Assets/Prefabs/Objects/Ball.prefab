@@ -341,7 +341,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &3297478575849059104
 MonoBehaviour:
@@ -651,6 +651,7 @@ MonoBehaviour:
   - jester
   - king
   - tomato
+  waffleTexture: {fileID: -6425830651967066815, guid: fa38bce3d2ac3ce4a8a1e7e6ac6d2834, type: 3}
 --- !u!82 &8146351743993527098
 AudioSource:
   m_ObjectHideFlags: 0

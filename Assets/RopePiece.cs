@@ -26,7 +26,23 @@ public class RopePiece : MonoBehaviour
         {
             print("BALL HIT THE ROPE!");
             Ball ballOnRope = collision.collider.gameObject.GetComponent<Ball>();
-            ballOnRope.ResetCombo();
+            if (ballOnRope.grabbed) return;
+
+            float timeSinceLastCollision = Time.time - ballOnRope.timeOfLastCollision;
+
+            if (ballOnRope.isWaffle())
+            {
+                if (timeSinceLastCollision > 0.5f)
+                {
+                    ballOnRope.ReduceCombo();
+                    ballOnRope.timeOfLastCollision = Time.time;
+                }
+            } else
+            {
+                ballOnRope.ResetCombo();
+            }
+
+
 
         } else
         {

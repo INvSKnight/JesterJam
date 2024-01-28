@@ -25,10 +25,14 @@ public class BallSpawner : MonoBehaviour
 
     public void SpawnBall()
     {
-        GameObject.Instantiate(Ball, 
-                                spawnPoint.position + Vector3.right * Random.RandomRange(-6f, 6f) 
-                                    + Vector3.up * Random.RandomRange(0.0f, 3.0f),
-                                Quaternion.identity, this.transform);
+        Vector3 x = Vector3.right * Random.RandomRange(-5f, 5f);
+        Vector3 y = Vector3.up * Random.RandomRange(0.0f, 3.0f);
+
+        GameObject newBall;
+        newBall = (GameObject)Instantiate(Ball, spawnPoint.position + x + y, Quaternion.identity, this.transform);
+
+        Ball ballClass = newBall.GetComponent<Ball>();
+        ballClass.EnableWaffleMode();
     }
 
 
