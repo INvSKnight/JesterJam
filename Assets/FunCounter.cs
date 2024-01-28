@@ -41,14 +41,14 @@ public class FunCounter : MonoBehaviour
     {
         if (scoreLabel != null)
         {
-            scoreLabel.text = "" + funPoints;
+            scoreLabel.text = "Score: " + funPoints;
         }
 
 
         timeLeft -= Time.deltaTime;
         if (timeLabel != null)
         {
-            timeLabel.text = ((int)timeLeft).ToString();
+            timeLabel.text = ((int)timeLeft).ToString() +"s";
         }
 
 
