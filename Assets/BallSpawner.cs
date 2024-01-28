@@ -37,7 +37,11 @@ public class BallSpawner : MonoBehaviour
         newBall = (GameObject)Instantiate(Ball, spawnPoint.position + x + y, Quaternion.identity, this.transform);
 
         Ball ballClass = newBall.GetComponent<Ball>();
-        ballClass.EnableWaffleMode();
+        if (waffle)
+        {
+            ballClass.EnableWaffleMode();
+        }
+
     }
 
 
