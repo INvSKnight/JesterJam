@@ -15,8 +15,8 @@ public class voiceinput : MonoBehaviour
     private void Start()
     {
         juggling = GameObject.Find("Juggling").GetComponent<Juggling>();
-        actions.Add("left", Up);
-        actions.Add("right", Down);
+        actions.Add("left", Left);
+        actions.Add("right", Right);
         actions.Add("tomato", Tomato);
         actions.Add("blue", Blue);
         actions.Add("hello", Hello);
@@ -40,14 +40,14 @@ public class voiceinput : MonoBehaviour
         actions[speech.text].Invoke();
     }
 
-    private void Up()
+    private void Left()
     {
-        print("Voice LEFT");
+        //print("Voice LEFT");
         juggling.TryToThrowBall("left");
     }
-    private void Down()
+    private void Right()
     {
-        print("Voice RIGHT");
+        //print("Voice RIGHT");
         juggling.TryToThrowBall("right");
     }
 

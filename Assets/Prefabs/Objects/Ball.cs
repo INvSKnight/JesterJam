@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
 
     public bool grabbed = false;
     public Transform grabLocation;
+  
 
     private Rigidbody2D rb;
 
@@ -26,6 +27,9 @@ public class Ball : MonoBehaviour
                                                 "ball", "juggle", "throw",
                                                 "jester", "king", "tomato"};
 
+    private AudioSource sfxThrow;
+    private int throwCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,8 @@ public class Ball : MonoBehaviour
         label.canvas.worldCamera = Camera.main;
 
         label.text = magicWord;
+
+        sfxThrow = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,6 +70,7 @@ public class Ball : MonoBehaviour
 
     public void Throw()
     {
+        throwCount++;
         timeOfLastThrow = Time.time;
         grabbed = false;
         //rb.AddForce(Vector3.up * 200f);
@@ -71,6 +78,8 @@ public class Ball : MonoBehaviour
         Vector3 y = Vector3.up * (7f + Random.RandomRange(-1.0f, 1.0f));
         Vector3 x = Vector3.right * 0f; // Random.RandomRange(-0.5f, 0.5f);
         rb.velocity = y + x;
+
+        sfxThrow.Play();
     }
 
     public bool MatchesWord(string word)
@@ -85,8 +94,16 @@ public class Ball : MonoBehaviour
         this.magicWord = allMagicWords[index];
     }
 
+
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        return; // Temp disabled
+
+
+
+
+
         // Ignore collisions right after being spawned, to prevent infinite loop in spawn area
         float secondsExisting = Time.time - timeOfCreation;
         if (secondsExisting < 0.2f) return;
