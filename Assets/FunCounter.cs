@@ -9,7 +9,7 @@ public class FunCounter : MonoBehaviour
     private TextMeshProUGUI scoreLabel;
     private int funPoints = 0;
 
-    float timeLeft = 10f;
+    float timeLeft = 60f;
     public TextMeshProUGUI timeLabel;
 
     public TextMeshProUGUI finalLabel;
@@ -21,7 +21,7 @@ public class FunCounter : MonoBehaviour
         scoreLabel = GetComponent<TextMeshProUGUI>();
         AddFunPoints(0);
 
-        finalLabel.enabled = false;
+        finalLabel.color = Color.clear;
     }
 
     public void AddFunPoints(int points)
@@ -47,8 +47,8 @@ public class FunCounter : MonoBehaviour
 
     private void EndTheGame()
     {
-        scoreLabel.enabled = false;
-        finalLabel.enabled = true;
+        scoreLabel.color = Color.clear;
+        finalLabel.color = Color.white;
 
         finalLabel.text = "Time's up! \n Score: " + funPoints;
         gameOver = true;

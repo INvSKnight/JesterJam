@@ -13,6 +13,8 @@ public class Juggling : MonoBehaviour
     private CircleCollider2D catchArea;
     public LayerMask layerMask;
 
+    private int throws = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +111,9 @@ public class Juggling : MonoBehaviour
         if (ballLeft == null) return;
         ballLeft.GetComponent<Ball>().Throw();
         ballLeft = null;
+
+        UpdateJugglingState();
+        throws++;
     }
 
     public void ThrowBallRight()
@@ -116,6 +121,22 @@ public class Juggling : MonoBehaviour
         if (ballRight == null) return;
         ballRight.GetComponent<Ball>().Throw();
         ballRight = null;
+
+        UpdateJugglingState();
+        throws++;
+    }
+
+    private void UpdateJugglingState()
+    {
+        if (throws <= 1)
+        {
+            GameObject kingObject = GameObject.FindGameObjectWithTag("King");
+            King king = kingObject.GetComponent<King>();
+            if (king != null)
+            {
+                king.ReactToJugglingStart();
+            }
+        }
     }
 
 

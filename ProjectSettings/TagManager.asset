@@ -8,6 +8,7 @@ TagManager:
   - BallSpawner
   - Rope
   - FunCounter
+  - King
   layers:
   - Default
   - TransparentFX

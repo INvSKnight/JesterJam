@@ -103,6 +103,8 @@ public class Ball : MonoBehaviour
             funCounter.AddFunPoints(throwCount);
         }
 
+        RandomizeMagicWord();
+
     }
 
     public bool MatchesWord(string word)
@@ -121,11 +123,15 @@ public class Ball : MonoBehaviour
     {
         throwCount = 0;
         timeOfLastCollision = Time.time;
+
+        RandomizeMagicWord();
     }
 
     public void ReduceCombo()
     {
         throwCount -= 1;
+
+        RandomizeMagicWord();
     }
 
     public void EnableWaffleMode()
@@ -166,9 +172,9 @@ public class Ball : MonoBehaviour
         timeOfLastCollision = Time.time;
 
 
-
-
         this.throwCount += 1;
+
+        RandomizeMagicWord();
 
         /*
         GameObject spawnerObject = GameObject.FindGameObjectWithTag("BallSpawner");
