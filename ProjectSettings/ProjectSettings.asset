@@ -718,11 +718,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: fc9e3621-1621-4063-a6f0-159a400f4862
+  cloudProjectId: 2db32d06-186b-4cef-9e58-eb3146ec990a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: JesterJam 2024-01-27_17-49-03
-  organizationId: serkansa1207
+  projectName: JesterJam
+  organizationId: steincode
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
