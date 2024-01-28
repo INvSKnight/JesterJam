@@ -641,11 +641,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: JesterJam
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 80a7c9a90271db01
   metroApplicationDescription: JesterJam
   wsaImages: {}
   metroTileShortName: JesterJam
