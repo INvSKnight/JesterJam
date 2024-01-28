@@ -174,7 +174,7 @@ public class Ball : MonoBehaviour
 
         this.throwCount += 1;
 
-        RandomizeMagicWord();
+        //RandomizeMagicWord();
 
         /*
         GameObject spawnerObject = GameObject.FindGameObjectWithTag("BallSpawner");

@@ -87,7 +87,8 @@ public class Juggling : MonoBehaviour
         if (ball.grabbed) return;
         if (!ball.isGrabbable()) return;
 
-
+        // Catches ball in left hand if available, otherwise right
+        /*
         if (ballLeft == null)
         {
             ballLeft = ball;
@@ -104,6 +105,38 @@ public class Juggling : MonoBehaviour
                 ball.grabLocation = handRight.transform;
             }
         }
+        */
+
+        // Catches ball in closest hand
+        // If only one is free, catch in free hand:
+        if (ballLeft == null && ballRight != null){
+            ballLeft = ball;
+            ball.grabbed = true;
+            ball.grabLocation = handLeft.transform;
+        }
+        else if (ballRight == null && ballLeft != null)
+        {
+            ballRight = ball;
+            ball.grabbed = true;
+            ball.grabLocation = handRight.transform;
+        } else if (ballRight != null && ballLeft != null)
+        {
+            // Both are occupied!
+        } else if (ballLeft == null && ballLeft == null)
+        {
+            // Both are free! Go to the closest.
+            float distToLeft = Vector3.Distance(ball.transform.position, handLeft.transform.position);
+            float distToRight = Vector3.Distance(ball.transform.position, handRight.transform.position);
+
+            if (distToLeft < distToRight)
+            {
+                ballLeft = ball; ball.grabbed = true; ball.grabLocation = handLeft.transform;
+            } else
+            {
+                ballRight = ball; ball.grabbed = true; ball.grabLocation = handRight.transform;
+            }
+        }
+
     }
 
     public void ThrowBallLeft()
