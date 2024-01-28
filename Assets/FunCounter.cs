@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -52,5 +53,30 @@ public class FunCounter : MonoBehaviour
 
         finalLabel.text = "Time's up! \n Score: " + funPoints;
         gameOver = true;
+
+        Invoke("RestartGame", 3f);
+    }
+
+    private void RestartGame()
+    {
+        print("Restarting game");
+        GameObject[] ballObjects = GameObject.FindGameObjectsWithTag("Ball");
+        foreach (GameObject ballObject in ballObjects)
+        {
+            GameObject.Destroy(ballObject);
+        }
+
+        GameObject ballSpawnerObject = GameObject.FindGameObjectWithTag("BallSpawner");
+        BallSpawner ballSpawner = ballSpawnerObject.GetComponent<BallSpawner>();
+        for (int i = 0; i < 4; i++)
+        {
+            ballSpawner.SpawnBall();
+        }
+
+        finalLabel.color = Color.clear;
+        scoreLabel.color = Color.white;
+        timeLabel.color = Color.white;
+        timeLeft = 60.0f;
+
     }
 }

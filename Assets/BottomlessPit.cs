@@ -30,7 +30,7 @@ public class BottomlessPit : MonoBehaviour
 
             GameObject spawnerObject = GameObject.FindGameObjectWithTag("BallSpawner");
             BallSpawner spawner = spawnerObject.GetComponent<BallSpawner>();
-            spawner.SpawnBall();
+            spawner.SpawnBall(true);
 
             GameObject.Destroy(collider.gameObject);
         }
