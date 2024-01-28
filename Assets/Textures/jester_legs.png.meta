@@ -117,6 +117,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -298,7 +311,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jester_legs_0: 2221255329564413795
+      jester_legs_1: -1511397355091136955
+      jester_legs_2: -6286480111629142121
+      jester_legs_3: -3608160598165158616
+      jester_legs_4: 5320441314450641430
+      jester_legs_5: 7461249858286553060
+      jester_legs_6: -5448591682747167620
+      jester_legs_7: 2293215805484000249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
