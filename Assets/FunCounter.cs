@@ -38,7 +38,11 @@ public class FunCounter : MonoBehaviour
         scoreLabel.text = "" + funPoints;
 
         timeLeft -= Time.deltaTime;
-        timeLabel.text = ((int)timeLeft).ToString();
+        if (timeLabel != null)
+        {
+            timeLabel.text = ((int)timeLeft).ToString();
+        }
+
 
         if (timeLeft <= 0)
         {
