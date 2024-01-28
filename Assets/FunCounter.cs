@@ -108,6 +108,8 @@ public class FunCounter : MonoBehaviour
 
 
         timeLeft = 60.0f;
+        gameOver = false;
+        funPoints = 0;
 
     }
 }
