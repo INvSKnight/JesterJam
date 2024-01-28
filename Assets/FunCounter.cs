@@ -12,19 +12,20 @@ public class FunCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        label = GetComponent<TextMeshProUGUI>();
         AddFunPoints(0);
     }
 
-    void AddFunPoints(int points)
+    public void AddFunPoints(int points)
     {
         funPoints += points;
-        label.text = "Funs: " + funPoints;
+        //label.text = "Funs: " + funPoints;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+        label.text = "" + funPoints;
     }
 }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6982421485985625144}
   - component: {fileID: 1580603849879735307}
   m_Layer: 3
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: WordLabel
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6800208755070872191}
   m_Layer: 3
   m_Name: HUD
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4426623541877986910}
   m_Layer: 3
   m_Name: Tomato
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 8994290374106160283}
   m_Layer: 3
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,8 +395,8 @@ GameObject:
   - component: {fileID: 7744080107598756843}
   - component: {fileID: 6783064950484415296}
   m_Layer: 3
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: ScoreLabel
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be8f474354836db458f2a4a7a4c64347, type: 2}
   m_sharedMaterial: {fileID: 1706040251702022560, guid: be8f474354836db458f2a4a7a4c64347, type: 2}
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 47.741608, y: 40.72384, z: 151.8555, w: 8.943514}
+  m_margin: {x: 47.19556, y: 40.72384, z: 151.351, w: 8.943514}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -631,7 +631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6816f3ba258280843ae7fa41f4d5fb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: {fileID: 6982421485985625144}
+  wordLabel: {fileID: 6982421485985625144}
+  scoreLabel: {fileID: 6783064950484415296}
   HUD: {fileID: 2209442227042135223}
   grabbed: 0
   grabLocation: {fileID: 0}

@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public TextMeshProUGUI label;
+    public TextMeshProUGUI wordLabel;
+    public TextMeshProUGUI scoreLabel;
+
     public GameObject HUD;
 
     public bool grabbed = false;
@@ -38,9 +40,10 @@ public class Ball : MonoBehaviour
         RandomizeMagicWord();
 
         rb = GetComponent<Rigidbody2D>();
-        label.canvas.worldCamera = Camera.main;
+        wordLabel.canvas.worldCamera = Camera.main;
 
-        label.text = magicWord;
+        wordLabel.text = magicWord;
+        scoreLabel.text = "";
 
         sfxThrow = GetComponent<AudioSource>();
     }
@@ -55,7 +58,14 @@ public class Ball : MonoBehaviour
             this.transform.position = grabLocation.position;
         }
 
-        label.text = magicWord;
+        wordLabel.text = magicWord;
+        if (throwCount <= 1)
+        {
+            scoreLabel.text = "";
+        } else
+        {
+            scoreLabel.text = "" + throwCount;
+        }
     }
 
     // The ball cannot be caught by the jester if already caught or just thrown
@@ -80,6 +90,12 @@ public class Ball : MonoBehaviour
         rb.velocity = y + x;
 
         sfxThrow.Play();
+
+        // Scoring the throw
+        GameObject scoreObject = GameObject.FindGameObjectWithTag("FunCounter");
+        FunCounter funCounter = scoreObject.GetComponent<FunCounter>();
+        funCounter.AddFunPoints(throwCount);
+
     }
 
     public bool MatchesWord(string word)
@@ -94,16 +110,14 @@ public class Ball : MonoBehaviour
         this.magicWord = allMagicWords[index];
     }
 
+    public void ResetCombo()
+    {
+        throwCount = 0;
+    }
 
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        return; // Temp disabled
-
-
-
-
-
         // Ignore collisions right after being spawned, to prevent infinite loop in spawn area
         float secondsExisting = Time.time - timeOfCreation;
         if (secondsExisting < 0.2f) return;
@@ -112,8 +126,11 @@ public class Ball : MonoBehaviour
         if (collision.otherCollider == null) return;
         if (collision.otherCollider.gameObject.tag != "Ball") return;
         // For some reason it still triggers on the rope. Hacky solution: 
-        if (this.transform.position.y < -2.0f) return; 
+        if (this.transform.position.y < -2.0f) return;
 
+        this.throwCount += 1;
+
+        /*
         GameObject spawnerObject = GameObject.FindGameObjectWithTag("BallSpawner");
         BallSpawner spawner = spawnerObject.GetComponent<BallSpawner>();
 
@@ -121,10 +138,10 @@ public class Ball : MonoBehaviour
         spawner.SpawnBall();
         //spawner.SpawnBall();
 
-
         GameObject.Destroy(collision.otherCollider.gameObject);
         GameObject.Destroy(this.gameObject);
-        
+        */
+
     }
 
 
