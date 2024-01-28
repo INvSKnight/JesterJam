@@ -22,7 +22,11 @@ public class FunCounter : MonoBehaviour
         scoreLabel = GetComponent<TextMeshProUGUI>();
         AddFunPoints(0);
 
-        finalLabel.color = Color.clear;
+        if (finalLabel != null)
+        {
+            finalLabel.color = Color.clear;
+        }
+
     }
 
     public void AddFunPoints(int points)
@@ -35,7 +39,11 @@ public class FunCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreLabel.text = "" + funPoints;
+        if (scoreLabel != null)
+        {
+            scoreLabel.text = "" + funPoints;
+        }
+
 
         timeLeft -= Time.deltaTime;
         if (timeLabel != null)
@@ -52,8 +60,15 @@ public class FunCounter : MonoBehaviour
 
     private void EndTheGame()
     {
-        scoreLabel.color = Color.clear;
-        finalLabel.color = Color.white;
+        if (scoreLabel != null)
+        {
+            scoreLabel.color = Color.clear;
+        }
+        if (finalLabel != null)
+        {
+            finalLabel.color = Color.white;
+        }
+
 
         finalLabel.text = "Time's up! \n Score: " + funPoints;
         gameOver = true;
@@ -77,9 +92,21 @@ public class FunCounter : MonoBehaviour
             ballSpawner.SpawnBall();
         }
 
-        finalLabel.color = Color.clear;
-        scoreLabel.color = Color.white;
-        timeLabel.color = Color.white;
+        if (finalLabel != null)
+        {
+            finalLabel.color = Color.clear;
+        }
+        if (scoreLabel != null)
+        {
+            scoreLabel.color = Color.white;
+        }
+        if (timeLabel != null)
+        {
+            timeLabel.color = Color.white;
+        }
+
+
+
         timeLeft = 60.0f;
 
     }
