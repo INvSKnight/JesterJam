@@ -6,14 +6,22 @@ using UnityEngine;
 
 public class FunCounter : MonoBehaviour
 {
-    private TextMeshProUGUI label;
+    private TextMeshProUGUI scoreLabel;
     private int funPoints = 0;
+
+    float timeLeft = 10f;
+    public TextMeshProUGUI timeLabel;
+
+    public TextMeshProUGUI finalLabel;
+    public bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        label = GetComponent<TextMeshProUGUI>();
+        scoreLabel = GetComponent<TextMeshProUGUI>();
         AddFunPoints(0);
+
+        finalLabel.enabled = false;
     }
 
     public void AddFunPoints(int points)
@@ -26,6 +34,23 @@ public class FunCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        label.text = "" + funPoints;
+        scoreLabel.text = "" + funPoints;
+
+        timeLeft -= Time.deltaTime;
+        timeLabel.text = ((int)timeLeft).ToString();
+
+        if (timeLeft <= 0)
+        {
+            EndTheGame();
+        }
+    }
+
+    private void EndTheGame()
+    {
+        scoreLabel.enabled = false;
+        finalLabel.enabled = true;
+
+        finalLabel.text = "Time's up! \n Score: " + funPoints;
+        gameOver = true;
     }
 }

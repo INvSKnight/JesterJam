@@ -98,7 +98,10 @@ public class Ball : MonoBehaviour
         // Scoring the throw
         GameObject scoreObject = GameObject.FindGameObjectWithTag("FunCounter");
         FunCounter funCounter = scoreObject.GetComponent<FunCounter>();
-        funCounter.AddFunPoints(throwCount);
+        if (!funCounter.gameOver)
+        {
+            funCounter.AddFunPoints(throwCount);
+        }
 
     }
 
